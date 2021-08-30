@@ -16,19 +16,17 @@ public class StringsAndThings {
      */
     public Integer countYZ(String input) {
 
-        String[] inArr = input.split(" ");
-        Integer expected = 0;
+        String[] inputArr = input.split(" ");
+        int num = 0;
 
-        for (String inLast : inArr) {
-            char lastChar = input.charAt(input.length() - 1);
+        for (String str : inputArr) {
+            char lastChar = str.charAt(str.length() - 1);
             if (lastChar == 'y' || lastChar == 'z') {
-                expected += 1;
-            } else {
-                expected += 0;
+                num += 1;
             }
         }
 
-        return expected;
+        return num;
     }
 
     /**
@@ -43,9 +41,9 @@ public class StringsAndThings {
     public String removeString(String base, String remove) {
 
 
-        String expected = base.replaceAll(remove, "");
+        String str = base.replaceAll(remove, "");
 
-        return expected;
+        return str;
     }
 
     /**
@@ -59,28 +57,19 @@ public class StringsAndThings {
     public Boolean containsEqualNumberOfIsAndNot(String input) {
 
 
-        boolean expected;
-        Integer is = 0;
-        Integer not = 0;
-        char[] isNot = input.replaceAll(" ", "").toCharArray();
 
-        for (int i = 0; i < isNot.length - 1; i++) {
-                if (isNot[i] == 'i' && isNot[i + 1] == 's') {
+        int is = 0;
+        int not = 0;
+
+        for (int i = 0; i < input.length() - 1; i++) {
+                if (input.charAt(i) == 'i' && input.charAt(i + 1) == 's') {
                     is += 1;
-                } else if (isNot[i] == 'n' && isNot[i + 1] == 'o' && isNot[i + 2] == 't') {
+                } else if (input.charAt(i) == 'n' && i != input.length() - 2 && input.charAt(i + 1) == 'o' && input.charAt(i + 2) == 't') {
                     not += 1;
-                } else {
-                    is += 0;
                 }
         }
 
-        if (is == not) {
-            expected = true;
-        } else  {
-            expected = false;
-        }
-
-        return expected;
+        return is == not;
 
     }
 
@@ -93,11 +82,9 @@ public class StringsAndThings {
      */
     public Boolean gIsHappy(String input) {
 
-        Boolean expected = true;
-        Integer happy = 0;
+        int happy = 0;
 
         for (int i = 0; i < input.length(); i++) {
-
             if (i == input.indexOf("gg")) {
                 happy += 1;
             } else if (i == input.indexOf("g")) {
@@ -105,13 +92,7 @@ public class StringsAndThings {
             }
         }
 
-        if (happy > 0) {
-            expected = true;
-        } else {
-            expected = false;
-        }
-
-        return expected;
+        return happy > 0;
     }
 
 
@@ -124,19 +105,15 @@ public class StringsAndThings {
      */
     public Integer countTriple(String input) {
 
-        Integer count3 = 0;
-        char[] tripleChar = input.toCharArray();
+        int triple = 0;
 
-
-
-        for (int i = 0; i < tripleChar.length - 2; i++) {
-            if (tripleChar[i] == tripleChar[i + 1] && tripleChar[i] == tripleChar[i + 2]) {
-                count3 += 1;
-            } else {
+        for (int i = 0; i < input.length() - 2; i++) {
+            if (input.charAt(i) == input.charAt(i + 1) && input.charAt(i) == input.charAt(i + 2)) {
+                triple += 1;
             }
         }
 
-        return count3;
+        return triple;
     }
 
 }
